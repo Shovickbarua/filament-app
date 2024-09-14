@@ -1,0 +1,42 @@
+@import '/vendor/filament/filament/resources/css/theme.css';
+
+@config 'tailwind.config.js';
+
+@layer components {
+    /* .fi-simple-main-ctn {
+        @apply w-[603px] h-[603px] -top-[145px] left-[371px] gap-0 opacity-[0.35] bg-[#FBD89D];
+    } */
+
+    .fi-simple-header-heading{
+        @apply hidden;
+    }
+    .fi-sidebar-item-active a {
+        @apply !bg-[#F59E0B];
+    }
+
+    .fi-sidebar-item-active a .fi-sidebar-item-icon,
+    .fi-sidebar-item-active a .fi-sidebar-item-label {
+        @apply !text-white;
+    }
+
+    .fi-sidebar-item:first-child{
+        @apply pb-5 border-b-[1px];
+    }
+    .fi-sidebar-item:nth-child(2){
+        @apply pt-5;
+    }
+    .fi-sidebar-item:last-child{
+        @apply pb-5 border-b-[1px];
+    }
+
+    aside{
+        @apply !bg-white !border-r-[1px] !border-r-[#E5E7EB];
+    }
+    .fi-topbar{
+        @apply !bg-[#F3F4F6];
+    }
+    .fi-main-ctn{
+        @apply !bg-[#f4f4f5];
+    }
+    /* */
+}
