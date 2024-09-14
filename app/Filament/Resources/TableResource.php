@@ -4,26 +4,40 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\TableResource\Pages;
 use App\Filament\Resources\TableResource\RelationManagers;
-use App\Models\Table;
+use App\Models\TableBook;
 use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class TableResource extends Resource
 {
-    protected static ?string $model = Table::class;
+    protected static ?string $model = TableBook::class;
+
+    protected static ?string $modelLabel = 'Table-1';
+
+    protected static ?string $pluralModelLabel = 'Table-1';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                TextInput::make('name'),
+                TextInput::make('meal'),
+                TextInput::make('email'),
+                TextInput::make('comment'),
             ]);
     }
 
@@ -31,7 +45,10 @@ class TableResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')->sortable()->searchable()->toggleable(),
+                TextColumn::make('meal')->sortable()->searchable()->toggleable(),
+                TextColumn::make('email')->sortable()->searchable()->toggleable(),
+                TextColumn::make('comment')->sortable()->searchable()->toggleable(),
             ])
             ->filters([
                 //

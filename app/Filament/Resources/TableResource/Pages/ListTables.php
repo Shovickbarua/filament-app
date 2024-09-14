@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\TableResource\Pages;
 
 use App\Filament\Resources\TableResource;
+use App\Filament\Resources\TableResource\Widgets\TableStats;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
@@ -14,6 +15,12 @@ class ListTables extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+        ];
+    }
+
+    protected function getHeaderWidgets(): array{
+        return [
+            TableStats::class,
         ];
     }
 }
