@@ -2,9 +2,10 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\DishResource\Pages;
-use App\Filament\Resources\DishResource\RelationManagers;
-use App\Models\Dish;
+use App\Filament\Resources\PeopleResource\Pages;
+use App\Filament\Resources\PeopleResource\RelationManagers;
+use App\Models\People;
+use App\Models\PeopleInvited;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -15,27 +16,22 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class DishResource extends Resource
+class PeopleResource extends Resource
 {
-    protected static ?string $model = Dish::class;
+    protected static ?string $model = PeopleInvited::class;
 
-    protected static ?string $navigationIcon = '';
+    protected static ?string $modelLabel = 'People Invited';
 
-    protected static ?string $recordTitleAttribute = 'meal';
+    protected static ?string $pluralModelLabel = 'People Invited';
 
-    protected static ?int $navigationSort = 3;
-
-    public static function getNavigationBadge(): ?string
-    {
-        return static::getModel()::count();
-    }
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 TextInput::make('meal'),
-                TextInput::make('comment'),
             ]);
     }
 
@@ -44,7 +40,6 @@ class DishResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('meal')->sortable()->searchable()->toggleable(),
-                TextColumn::make('comment')->sortable()->searchable()->toggleable(),
             ])
             ->filters([
                 //
@@ -69,9 +64,9 @@ class DishResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListDishes::route('/'),
-            'create' => Pages\CreateDish::route('/create'),
-            'edit' => Pages\EditDish::route('/{record}/edit'),
+            'index' => Pages\ListPeople::route('/'),
+            'create' => Pages\CreatePeople::route('/create'),
+            'edit' => Pages\EditPeople::route('/{record}/edit'),
         ];
     }
 }

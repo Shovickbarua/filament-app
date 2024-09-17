@@ -6,9 +6,11 @@ use App\Filament\Resources\TableSetupResource\Pages;
 use App\Filament\Resources\TableSetupResource\RelationManagers;
 use App\Models\TableSetup;
 use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -23,11 +25,13 @@ class TableSetupResource extends Resource
 
     protected static ?string $navigationIcon = '';
 
+    protected static ?int $navigationSort = 4;
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                TextInput::make('meal'),
             ]);
     }
 
@@ -35,7 +39,7 @@ class TableSetupResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('meal')->sortable()->searchable()->toggleable(),
             ])
             ->filters([
                 //

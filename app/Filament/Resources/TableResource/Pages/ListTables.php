@@ -11,6 +11,11 @@ class ListTables extends ListRecords
 {
     protected static string $resource = TableResource::class;
 
+    protected int | string | array $columnSpan = [
+        'md' => 2,
+        'xl' => 2,
+    ];
+
     protected function getHeaderActions(): array
     {
         return [

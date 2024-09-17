@@ -16,9 +16,9 @@ class HomePage extends Component
             "name"=> $this->name,
             "email"=> $this->email,
             "drink"=> $this->drink,
-            "dish_id"=> $this->dish_id,
+            "dish_id"=> '1',
             "comment"=> $this->comment,
-            "tableNumber"=> $this->tableNumber,
+            // "tableNumber"=> $this->tableNumber,
 
         ]);
     }

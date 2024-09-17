@@ -11,7 +11,8 @@ class TableStats extends BaseWidget
     protected function getStats(): array
     {
         return [
-            Stat::make("Total Seats", TableBook::query()->count()),
+            // Stat::make("Total Seats", TableBook::query()->count()),
+            Stat::make("Total Seats", 6),
             Stat::make("Occupied", TableBook::query()->count()),
         ];
     }

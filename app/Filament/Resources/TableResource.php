@@ -4,8 +4,10 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\TableResource\Pages;
 use App\Filament\Resources\TableResource\RelationManagers;
+use App\Models\Dish;
 use App\Models\TableBook;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -19,15 +21,28 @@ class TableResource extends Resource
 {
     protected static ?string $model = TableBook::class;
 
+    // protected static ?string $title = 'Table';
+
     protected static ?string $modelLabel = 'Table-1';
 
-    protected static ?string $pluralModelLabel = 'Table-1';
+    protected static ?string $pluralModelLabel = 'Table';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-bolt';
 
+    protected static ?int $navigationSort = 1;
     public static function getNavigationBadge(): ?string
     {
         return static::getModel()::count();
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->with('dish');
+    }
+
+    public static function canCreate(): bool
+    {
+       return false;
     }
 
     public static function form(Form $form): Form
@@ -35,7 +50,11 @@ class TableResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name'),
-                TextInput::make('meal'),
+                // TextInput::make('meal'),
+                Select::make('meal')
+                    ->label('Meal')
+                    ->options(Dish::all()->pluck('meal', 'id'))
+                    ->searchable(),
                 TextInput::make('email'),
                 TextInput::make('comment'),
             ]);
@@ -46,7 +65,7 @@ class TableResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')->sortable()->searchable()->toggleable(),
-                TextColumn::make('meal')->sortable()->searchable()->toggleable(),
+                TextColumn::make('dish.meal')->label('meal')->sortable()->searchable()->toggleable(),
                 TextColumn::make('email')->sortable()->searchable()->toggleable(),
                 TextColumn::make('comment')->sortable()->searchable()->toggleable(),
             ])
