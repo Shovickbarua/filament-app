@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('meal');
             $table->string('email');
             $table->string('comment');
+            $table->unsignedBigInteger('dish_id');
+            $table->string('TableNumber');
             $table->timestamps();
         });
     }
