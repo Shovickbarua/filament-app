@@ -9,6 +9,7 @@ use Livewire\Component;
 class HomePage extends Component
 {
     public $name, $email, $drink, $dish_id, $comment, $tableNumber;
+    public $successMessage;
     public function save(){
 
         // dd($this->tableNumber);
@@ -21,6 +22,8 @@ class HomePage extends Component
             // "tableNumber"=> $this->tableNumber,
 
         ]);
+        
+        $this->successMessage = 'Table booked successfully!';
     }
 
     public function render()

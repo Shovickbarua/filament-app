@@ -10,6 +10,11 @@
             <button class="text-white bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded-lg ml-2">Export PDF</button>
             <button class="text-white bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded-lg ml-2">Export EXCEL</button>
         </div>
+        @if ($successMessage)
+            <div class="mb-4 p-4 text-green-700 bg-green-100 border border-green-300 rounded">
+                {{ $successMessage }}
+            </div>
+        @endif
         {{-- Table Section --}}
         <div class="">
             <div class="flex gap-2 justify-center pt-24">
@@ -122,7 +127,7 @@
                                 <label for="comment" wire:model='comment' class="block text-sm font-medium text-gray-700">Comment</label>
                                 <input type="text" id="comment" wire:model='comment' class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Comment">
                             </div>
-                            <input type="text" name="tableNumber" id='tableNumber' wire:model="tableNumber" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <input type="hidden" name="tableNumber" id='tableNumber' wire:model="tableNumber" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                         </div>
                         <!-- Modal Footer -->
                         <div class="flex justify-end pt-3 border-t border-gray-200 p-6">
