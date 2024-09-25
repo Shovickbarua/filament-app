@@ -11,8 +11,6 @@ class ListDishes extends ListRecords
 {
     protected static string $resource = DishResource::class;
 
-    protected int | string | array $columnSpan = 'full';
-
     protected function getHeaderActions(): array
     {
         return [

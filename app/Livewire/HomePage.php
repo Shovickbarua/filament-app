@@ -4,15 +4,16 @@ namespace App\Livewire;
 
 use App\Models\Dish;
 use App\Models\TableBook;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
+#[Title('Home')]
 class HomePage extends Component
 {
     public $name, $email, $drink, $dish_id, $comment, $tableNumber;
     public $successMessage;
     public function save(){
 
-        // dd($this->tableNumber);
         TableBook::create([
             "name"=> $this->name,
             "email"=> $this->email,

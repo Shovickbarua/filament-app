@@ -3,23 +3,6 @@
 @config 'tailwind.config.js';
 
 @layer components {
-    /* .fi-simple-main-ctn {
-        @apply w-[603px] h-[603px] -top-[145px] left-[371px] gap-0 opacity-[0.35] bg-[#FBD89D];
-    } */
-    .fi-sidebar-header{
-        /* @apply */
-    }
-    /* .fi-sidebar-header::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80%; /* Adjust this value to control the spread of the gradient */
-        /* height: 4px; /* Thickness of the border */
-        /* background: linear-gradient(to left, transparent, rgba(255, 0, 0, 0.5), transparent);  */
-        /* pointer-events: none;  */
-    /* }  */
 
     .fi-sidebar-item-active a {
         @apply !bg-[#F59E0B];
@@ -55,6 +38,5 @@
     .fi-badge{
         @apply !bg-[#FDECCE] !rounded-full ;
     }
-
 
 }

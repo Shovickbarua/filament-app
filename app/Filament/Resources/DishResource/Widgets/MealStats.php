@@ -8,7 +8,6 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 
 class MealStats extends BaseWidget
 {
-    protected int | string | array $columnSpan = 'full';
 
     protected function getStats(): array
     {

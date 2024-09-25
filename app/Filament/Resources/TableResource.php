@@ -40,11 +40,6 @@ class TableResource extends Resource
         return parent::getEloquentQuery()->with('dish');
     }
 
-    public static function canCreate(): bool
-    {
-       return false;
-    }
-
     public static function form(Form $form): Form
     {
         return $form
